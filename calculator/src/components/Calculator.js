@@ -1,5 +1,6 @@
 import '../App.css'
 import React, {useState, useEffect, useRef} from 'react';
+import { buttonValues } from './Buttons';
 
 function Calculator() {
   const [result, setResult] = useState("");
@@ -30,11 +31,32 @@ function Calculator() {
   return (
     <div className="calc-app">
       <form>
-        <input type="text" value={result} ref={inputRef}>
+        <input type="text" readOnly={true} defaultValue={result} ref={inputRef}>
         </input>
       </form>
 
       <div className='keypad'>
+        {
+             buttonValues.flat().map(
+              (b, i) => {
+                return (
+                <button key={b} id={b} onClick={
+                  b === "Clear"
+                  ? clear
+                  : b === "C"
+                  ? backspace
+                  : b === "Result"
+                  ? calculate
+                  : handleClick
+                } name={b}>
+                  {b}
+                </button> )
+              }
+            )
+        }
+      </div>
+
+      {/*<div className='keypad'>
         <button id='clear' onClick={clear}>Clear</button>
         <button id='backspace' onClick={backspace}>C</button>
         <button name="+" onClick={handleClick}>+</button>
@@ -53,7 +75,7 @@ function Calculator() {
         <button name="0" onClick={handleClick}>0</button>
         <button name="." onClick={handleClick}>.</button>
         <button id='result' onClick={calculate}>Result</button>
-      </div>
+      </div>*/}
     </div>
   );
 }

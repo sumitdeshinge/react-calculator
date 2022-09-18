@@ -1,7 +1,9 @@
 import '../App.css'
 import React, { Component } from "react";
+import { buttonValues } from './Buttons';
 
 class ClassCalculator extends Component {
+
     constructor() {
         super()
         this.state = {
@@ -46,11 +48,32 @@ class ClassCalculator extends Component {
         return (
             <div className="calc-app">
                 <form>
-                    <input type="text" value={this.state.result}>
+                    <input type="text" defaultValue={this.state.result}>
                     </input>
                 </form>
 
                 <div className='keypad'>
+                    
+                {
+                    buttonValues.flat().map(
+                    (b, i) => {
+                        return (
+                        <button id={b} key={b} onClick={
+                        b === "Clear"
+                        ? this.clear
+                        : b === "C"
+                        ? this.backspace
+                        : b === "Result"
+                        ? this.calculate
+                        : this.handleClick
+                        } name={b}>
+                        {b}
+                        </button> )
+                    }
+                    )
+                }
+
+                    {/*
                     <button id='clear' onClick={this.clear}>Clear</button>
                     <button id='backspace' onClick={this.backspace}>C</button>
                     <button name="+" onClick={this.handleClick}>+</button>
@@ -68,7 +91,7 @@ class ClassCalculator extends Component {
                     <button name="/" onClick={this.handleClick}>/</button>
                     <button name="0" onClick={this.handleClick}>0</button>
                     <button name="." onClick={this.handleClick}>.</button>
-                    <button id='result' onClick={this.calculate}>Result</button>
+        <button id='result' onClick={this.calculate}>Result</button> */}
                 </div>
             </div>
         )
