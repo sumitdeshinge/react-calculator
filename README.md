@@ -26,5 +26,5 @@ Important Code Entry Points
 4. src/components/Calculator.test.js
 5. src/components/ClassCalculator.js
 6. src/components/ClassCalculator.test.js
-7. Code coverage report at > src/Screenshot 2022-09-18 at 1.12.36 PM.png
+7. Code coverage report at > src/CodeCoverage.png
  
